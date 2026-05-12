@@ -4,112 +4,391 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>政治业务对照表</title>
-    <!-- 引入 Tailwind CSS 引擎 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* 声明优设标题黑，直接调用你 Mac 本地安装好的字体 */
-        @font-face {
-            font-family: 'YouSheBiaoTiHei';
-            src: local('YouSheBiaoTiHei'), local('优设标题黑');
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#2F6CF2',
+                    },
+                }
+            }
         }
+    </script>
+    <style>
+        /* 强制最小宽度为 1920px，保证所有的像素级尺寸绝对不会因为屏幕小而被挤压变形 */
         body {
-            /* 整体背景色 */
-            background-color: #F5F7FA; 
+            min-width: 1920px;
+            overflow-x: auto;
+            background-color: #F2F5F8; /* 灰色底层背景 */
+        }
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+        
+        /* 引入设计稿特殊字体 (需本机安装，否则回退系统粗体) */
+        .font-youshe { font-family: 'YouSheBiaoTiHei', 'Microsoft YaHei', sans-serif; }
+        .font-pangmen { font-family: 'PangMenZhengDao', 'Impact', sans-serif; }
+        .font-pingfang { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+
+        /* 内容切换时的淡入淡出动画 */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body class="font-pingfang text-gray-800 antialiased min-h-screen flex flex-col items-center">
 
-    <!-- 1800px 主容器 -->
-    <div class="w-[1800px] flex flex-col pb-[60px] mt-[20px]">
+    <!-- ================= 顶部 banner (绝对高度 134px) ================= -->
+    <div class="w-full min-w-[1920px] h-[134px] text-white relative flex flex-col items-center justify-center space-y-1 shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] z-30">
+        <div class="absolute inset-0 overflow-hidden z-0">
+            <!-- 负边距裁剪切图自带的透明阴影白边 -->
+            <div class="absolute inset-[-40px]" style="background-image: url('./assets/assets-banner-顶部背景图@2x.png'); background-size: cover; background-position: center;"></div>
+        </div>
+        <div class="relative z-10 text-[36px] tracking-[2px] italic transform -skew-x-6 font-youshe" style="text-shadow: 0px 2px 4px rgba(0,0,0,0.25);">
+            增强“四个意识” 坚定“四个自信” 做到“两个维护”
+        </div>
+        <div class="relative z-10 text-[36px] tracking-[2px] italic transform -skew-x-6 font-youshe" style="text-shadow: 0px 2px 4px rgba(0,0,0,0.25);">
+            守国门 促发展 当好让党放心 让人民满意的国门卫士
+        </div>
+    </div>
 
-        <!-- ==================== 第一部分：顶部 Header 区域 ==================== -->
-        <!-- 这里先用一个占位块替代你最顶部的深蓝色海报，你需要替换为实际的 img 标签 -->
-        <div class="w-full h-[140px] bg-blue-600 rounded-t-[8px]"></div>
-
-        <!-- “四级”、“五有”、“七步” 核心理念白底条幅 -->
-        <div class="w-full h-[100px] bg-white flex items-center justify-center border-b border-blue-100 shadow-sm rounded-b-[8px]">
+    <!-- ================= 次级导航区徽章 (绝对高度 102px) ================= -->
+    <div class="bg-white w-full min-w-[1920px] h-[102px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] z-20 relative flex items-center justify-center">
+        <!-- 锁定中心内容区间距 -->
+        <div class="w-[1800px] flex items-center justify-center">
             
-            <!-- 模块 1：压实四级 -->
-            <div class="flex items-center gap-[10px]">
-                <!-- 请确认这里的文件名是否与你 assets 文件夹中的一致 -->
-                <img src="./assets/assets-icon-压实“四级”主体责任.png" alt="四级" class="w-[42px] h-[42px] object-contain">
-                <div class="text-[32px] text-[#2D70EB] font-['YouSheBiaoTiHei']">
-                    压实“四级”主体责任
+            <!-- 模块 1：压实四级 (严格 1:1 还原) -->
+            <div class="flex items-center">
+                <div class="w-[60px] h-[60px] flex-shrink-0 relative z-10">
+                    <img src="./assets/assets-icon-压实“四级”主体责任@2x.png" class="w-full h-full object-contain">
+                </div>
+                <!-- 间距 10px，文本框宽 300px，高 42px，字号 32px，优设标题黑，颜色 #2D70EB -->
+                <div class="ml-[10px] w-[300px] h-[42px] flex items-center justify-start">
+                    <span class="text-[#2D70EB] font-youshe text-[32px] font-normal leading-none mt-1">压实“四级”主体责任</span>
+                </div>
+            </div>
+            
+            <!-- 分隔线 (两侧各 40px 间距) -->
+            <div class="mx-[40px] w-[1px] h-[30px] bg-[#E2E8F0]"></div>
+            
+            <!-- 模块 2：优化五有 -->
+            <div class="flex items-center">
+                <div class="w-[60px] h-[60px] flex-shrink-0 relative z-10">
+                    <img src="./assets/assets-icon-优化“五有”运行模式@2x.png" class="w-full h-full object-contain">
+                </div>
+                <div class="ml-[10px] w-[300px] h-[42px] flex items-center justify-start">
+                    <span class="text-[#2D70EB] font-youshe text-[32px] font-normal leading-none mt-1">优化“五有”运行模式</span>
                 </div>
             </div>
 
-            <!-- 间距 40px 及分隔线 -->
-            <div class="mx-[40px] w-[1px] h-[30px] bg-blue-200"></div>
-
-            <!-- 模块 2：深化五有 -->
-            <div class="flex items-center gap-[10px]">
-                <!-- 请确认这里的文件名是否与你 assets 文件夹中的一致 -->
-                <img src="./assets/assets-icon-优设“五有”运行模式@2x.png" alt="五有" class="w-[42px] h-[42px] object-contain">
-                <div class="text-[32px] text-[#2D70EB] font-['YouSheBiaoTiHei']">
-                    深化“五有”运行模式
-                </div>
-            </div>
-
-            <!-- 间距 40px 及分隔线 -->
-            <div class="mx-[40px] w-[1px] h-[30px] bg-blue-200"></div>
+            <!-- 分隔线 (两侧各 40px 间距) -->
+            <div class="mx-[40px] w-[1px] h-[30px] bg-[#E2E8F0]"></div>
 
             <!-- 模块 3：拧紧七步 -->
-            <div class="flex items-center gap-[10px]">
-                <!-- 请确认这里的文件名是否与你 assets 文件夹中的一致 -->
-                <img src="./assets/assets-icon-拧紧“七步”程序链条@2x.png" alt="七步" class="w-[42px] h-[42px] object-contain">
-                <div class="text-[32px] text-[#2D70EB] font-['YouSheBiaoTiHei']">
-                    拧紧“七步”程序链条
+            <div class="flex items-center">
+                <div class="w-[60px] h-[60px] flex-shrink-0 relative z-10">
+                    <img src="./assets/assets-icon-拧紧“七步”程序链条@2x.png" class="w-full h-full object-contain">
+                </div>
+                <div class="ml-[10px] w-[300px] h-[42px] flex items-center justify-start">
+                    <span class="text-[#2D70EB] font-youshe text-[32px] font-normal leading-none mt-1">拧紧“七步”程序链条</span>
                 </div>
             </div>
+
+        </div>
+    </div>
+
+    <!-- ================= 蓝色主标题与搜索区 (绝对高度 144px) ================= -->
+    <div class="bg-brand-blue w-full min-w-[1920px] h-[144px] relative z-10">
+        <!-- 内部锁定 1800px 容器 -->
+        <div class="w-[1800px] h-full mx-auto relative">
+            
+            <!-- 1. 绝对定位：中心主标题 -->
+            <div class="absolute top-[10px] left-[785px] w-[230px] flex justify-center text-white font-youshe text-[34px] tracking-[2px]" style="text-shadow: 1px 2px 4px rgba(0,0,49,0.60);">
+                政治业务对照表
+            </div>
+            
+            <!-- 2. 绝对定位：头像 (推算坐标，左侧紧贴文字) -->
+            <img src="./assets/assets-icon-头像@2x.png" alt="头像" class="absolute top-[21px] left-[1261px] w-[22px] h-[22px] rounded-full">
+            
+            <!-- 3. 绝对定位：用户信息文本 (严格按照 Figma X: 1353px 换算) -->
+            <div class="absolute top-[21px] left-[1293px] w-[386px] h-[22px] flex items-center text-white/90 text-[16px] font-semibold whitespace-nowrap">
+                李俊峰科长 | 新港海关 | 综合业务处 | 进口通关四科
+            </div>
+            
+            <!-- 4. 绝对定位：点击进入按钮 -->
+            <button class="absolute top-[13px] left-[1694px] w-[106px] h-[38px] rounded-[19px] bg-white/10 border border-white/50 hover:bg-white/20 transition-colors flex items-center justify-center text-white text-[18px] font-semibold tracking-[0.9px] cursor-pointer z-50">
+                <span class="pl-[0.9px] pb-[2px] leading-none pointer-events-none">点击进入</span>
+            </button>
+
+            <!-- 5. 绝对定位：主搜索大框 -->
+            <div class="absolute top-[64px] left-[490px] w-[704px] h-[50px] bg-[#FCFCFD] rounded-[25px] shadow-[inset_-1px_-1px_6px_0px_rgba(0,15,95,0.40)] flex items-center pl-[20px] pr-[6px]">
+                <img src="./assets/assets-icon-搜索@2x.png" alt="搜索" class="w-[20px] h-[20px]">
+                <input type="text" placeholder="目前为全局检索，请输入关键字..." class="flex-grow outline-none text-[#344977] text-[16px] bg-transparent placeholder-gray-400 px-[12px] h-full">
+                <!-- 内嵌按钮尺寸同步限定为 106x38 -->
+                <button class="bg-[#3A78F2] text-white w-[106px] h-[38px] rounded-[19px] text-[14px] font-bold tracking-wider flex items-center justify-center flex-shrink-0 cursor-pointer">
+                    全局检索
+                </button>
+            </div>
+            
+            <!-- 6. 绝对定位：AI检索按钮 -->
+            <button class="absolute top-[70px] left-[1204px] flex items-center justify-center text-white text-[18px] font-semibold tracking-[0.9px] hover:bg-white/20 transition-colors shadow-sm cursor-pointer z-50"
+                    style="width: 106px; height: 38px; background: rgba(255, 255, 255, 0.10); border: 0.5px solid #ffffff; border-radius: 19.5px;">
+                <span class="pl-[0.9px] pb-[2px] leading-none pointer-events-none">AI检索</span>
+            </button>
             
         </div>
+    </div>
 
-        <!-- ==================== 第二部分：中间全景图区域 ==================== -->
-        <!-- 暂时用一个白板占位，你可以把切好的“政治业务对照表”大图塞进这里 -->
-        <div class="mt-[20px] w-full bg-[#FFFFFF] rounded-[8px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] p-[30px] min-h-[600px] flex justify-center items-center">
-            <p class="text-gray-400 text-lg">这里放置“政治业务对照表”大版块切图</p>
+    <!-- ================= 灰色主体内容包裹区 ================= -->
+    <div class="w-[1800px] flex flex-col pb-[60px]">
+        
+        <!-- ================= 动态主内容展示区 (默认显示全景图与统计) ================= -->
+        <div id="main-content-display" class="mt-[41px] w-[1800px] h-[701px] bg-[#FFFFFF] rounded-[8px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] p-[30px] flex gap-[20px] fade-in">
+            
+            <!-- 左侧全景图 (绝对尺寸 1292x640) -->
+            <div class="w-[1292px] h-[640px] bg-[#FCFCFD] rounded-[16px] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] p-[32px] flex flex-col relative">
+                
+                <!-- 标题与图例 -->
+                <div class="w-full h-[33px] relative mb-[40px] z-20">
+                    
+                    <!-- 全景图 标题 -->
+                    <div class="absolute left-0 top-1/2 transform -translate-y-1/2 flex items-center text-[#2B6EF5] font-extrabold text-[18px] tracking-widest space-x-2">
+                        <img src="./assets/assets-icon-全景图@2x.png" class="w-[24px] h-[24px]" onerror="this.src='https://placehold.co/24x24/transparent/2B6EF5?text=图'">
+                        <span>全景图</span>
+                    </div>
+                    
+                    <!-- 图例组 -->
+                    <div class="absolute left-[387px] top-1/2 transform -translate-y-1/2 flex gap-[20px]">
+                        <div class="w-[85px] h-[33px] bg-[#F24646]/10 border-[0.5px] border-[#F24646] rounded-[16.5px] flex items-center justify-center">
+                            <span class="w-[11px] h-[11px] rounded-full bg-[#F24646] mr-[6px]"></span>
+                            <span class="text-[#344977] text-[16px] font-semibold">本职</span>
+                        </div>
+                        <div class="w-[92px] h-[33px] bg-[#FF8341]/10 border-[0.5px] border-[#FF8341] rounded-[16.5px] flex items-center justify-center">
+                            <span class="w-[11px] h-[11px] rounded-full bg-[#FF8341] mr-[6px]"></span>
+                            <span class="text-[#344977] text-[16px] font-semibold">AB角</span>
+                        </div>
+                        <div class="w-[102px] h-[33px] bg-[#27C927]/10 border-[0.5px] border-[#27C927] rounded-[16.5px] flex items-center justify-center">
+                            <span class="w-[11px] h-[11px] rounded-full bg-[#27C927] mr-[6px]"></span>
+                            <span class="text-[#344977] text-[16px] font-semibold">结合部</span>
+                        </div>
+                        <div class="w-[102px] h-[33px] bg-[#00B3E8]/10 border-[0.5px] border-[#00B3E8] rounded-[16.5px] flex items-center justify-center">
+                            <span class="w-[11px] h-[11px] rounded-full bg-[#00B3E8] mr-[6px]"></span>
+                            <span class="text-[#344977] text-[16px] font-semibold">延长线</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 切换按钮 -->
+                    <div class="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center bg-[#FFFFFF] w-[208px] h-[45px] rounded-[22.5px] shadow-[1px_2px_10px_0px_rgba(55,73,118,0.20)] px-[6px]">
+                        <button class="bg-[#2D70EB] text-white w-[100px] h-[33px] rounded-[16.5px] flex items-center justify-center text-[18px] font-semibold shadow-sm cursor-pointer">已订阅</button>
+                        <button class="text-[#2D70EB] flex-1 h-[33px] rounded-[16.5px] hover:bg-blue-50 transition-colors flex items-center justify-center text-[18px] font-semibold cursor-pointer">全部</button>
+                    </div>
+
+                </div>
+
+                <!-- 树状图演示核心区 -->
+                <div class="flex-grow flex items-center justify-center relative">
+                    <div class="flex items-center">
+                        <div class="relative z-10">
+                            <div class="bg-gradient-to-br from-[#3A78F2] to-[#255ED4] text-white font-bold text-center py-5 px-8 rounded-[12px] shadow-[0_8px_15px_-3px_rgba(58,120,242,0.4)] w-[140px] text-[18px] tracking-wider border border-blue-400/30">
+                                政治业务<br>对照表
+                            </div>
+                            <div class="absolute top-1/2 -right-[48px] w-[48px] h-[1.5px] bg-[#D1D5DB]"></div>
+                        </div>
+                        <div class="relative ml-[48px] flex flex-col space-y-[20px] py-2 z-10">
+                            <div class="absolute left-0 top-[32px] bottom-[32px] w-[1.5px] bg-[#D1D5DB]"></div>
+                            
+                            <!-- 节点1 -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1.5px] bg-[#D1D5DB]"></div>
+                                <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] p-[12px] w-[180px] shadow-sm flex items-center relative overflow-hidden">
+                                    <div class="absolute left-0 top-0 bottom-0 w-[6px] bg-[#EF4444]"></div>
+                                    <div class="ml-[12px]">
+                                        <div class="text-[15px] font-bold text-gray-800 tracking-wide">卫生检疫</div>
+                                        <div class="text-[12px] text-gray-500 mt-0.5">1个条线</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 节点2 -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1.5px] bg-[#D1D5DB]"></div>
+                                <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] p-[12px] w-[180px] shadow-sm flex items-center relative overflow-hidden">
+                                     <div class="absolute left-0 top-0 bottom-0 w-[6px] flex flex-col">
+                                         <div class="flex-1 bg-[#EF4444]"></div><div class="flex-1 bg-[#F97316]"></div><div class="flex-1 bg-[#22C55E]"></div><div class="flex-1 bg-[#0EA5E9]"></div>
+                                     </div>
+                                     <div class="ml-[12px]">
+                                        <div class="text-[15px] font-bold text-gray-800 tracking-wide">进出口商品检验</div>
+                                        <div class="text-[12px] text-gray-500 mt-0.5">4个条线</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 节点3 -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1.5px] bg-[#D1D5DB]"></div>
+                                <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] p-[12px] w-[180px] shadow-sm flex items-center relative overflow-hidden">
+                                    <div class="absolute left-0 top-0 bottom-0 w-[6px] bg-[#22C55E]"></div>
+                                    <div class="ml-[12px]">
+                                        <div class="text-[15px] font-bold text-gray-800 tracking-wide">动植物检疫</div>
+                                        <div class="text-[12px] text-gray-500 mt-0.5">1个条线</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 节点4 -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1.5px] bg-[#D1D5DB]"></div>
+                                <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] p-[12px] w-[180px] shadow-sm flex items-center relative overflow-hidden">
+                                    <div class="absolute left-0 top-0 bottom-0 w-[6px] flex flex-col"><div class="flex-[3] bg-[#F97316]"></div><div class="flex-[2] bg-[#0EA5E9]"></div></div>
+                                    <div class="ml-[12px]">
+                                        <div class="text-[15px] font-bold text-gray-800 tracking-wide">统计分析</div>
+                                        <div class="text-[12px] text-gray-500 mt-0.5">5个条线</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧 3 卡片 -->
+            <div class="w-[428px] h-[640px] flex flex-col gap-[20px]">
+                <div class="w-full h-[200px] bg-[#FCFCFD] rounded-[16px] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] relative overflow-hidden flex items-center">
+                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-[#E0F0FF] rounded-full filter blur-xl opacity-50"></div>
+                    <div class="w-[160px] h-[160px] relative z-10 ml-[32px]">
+                        <img src="./assets/assets-icon-工作领域@2x.png" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/160x160/transparent/20A8F0?text=工作领域'">
+                    </div>
+                    <div class="flex flex-col items-center flex-grow pr-[30px] z-10">
+                        <div class="text-[60px] text-[#20A8F0] leading-none font-pangmen">4</div>
+                        <div class="text-[24px] text-[#344977] font-semibold mt-[10px]">工作领域</div>
+                    </div>
+                </div>
+
+                <div class="w-full h-[200px] bg-[#FCFCFD] rounded-[16px] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] relative overflow-hidden flex items-center">
+                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-[#E0F0FF] rounded-full filter blur-xl opacity-50"></div>
+                    <div class="w-[160px] h-[160px] relative z-10 ml-[32px]">
+                        <img src="./assets/assets-icon-业务条线@2x.png" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/160x160/transparent/565CD6?text=业务条线'">
+                    </div>
+                    <div class="flex flex-col items-center flex-grow pr-[30px] z-10">
+                        <div class="text-[60px] text-[#565CD6] leading-none font-pangmen">10</div>
+                        <div class="text-[24px] text-[#344977] font-semibold mt-[10px]">业务条线</div>
+                    </div>
+                </div>
+
+                <div class="w-full h-[200px] bg-[#FCFCFD] rounded-[16px] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] relative overflow-hidden flex items-center">
+                     <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-[#E0F0FF] rounded-full filter blur-xl opacity-50"></div>
+                     <div class="w-[160px] h-[160px] relative z-10 ml-[32px]">
+                         <img src="./assets/assets-icon-工作岗位@2x.png" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/160x160/transparent/A636C6?text=工作岗位'">
+                    </div>
+                    <div class="flex flex-col items-center flex-grow pr-[30px] z-10">
+                        <div class="text-[60px] text-[#A636C6] leading-none font-pangmen">19</div>
+                        <div class="text-[24px] text-[#344977] font-semibold mt-[10px]">工作岗位</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- ==================== 第三部分：底部 8 个按钮矩阵 ==================== -->
-        <!-- 这部分是你原封不动写好的优美代码 -->
-        <div class="mt-[40px] w-[1800px] bg-[#FFFFFF] rounded-[8px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] p-[30px]">
+        <!-- 第二个大卡片 (操作按钮, 绝对尺寸 1800x245) -->
+        <div class="mt-[40px] w-[1800px] h-[245px] bg-[#FFFFFF] rounded-[8px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] p-[30px]">
+            <!-- 精准布局网格 -->
             <div class="grid grid-cols-4 gap-x-[20px] gap-y-[25px]">
-                <!-- 按钮1 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+                
+                <!-- 为每个按钮添加 onclick 事件，调用 switchPage 函数，并传递页面名称 -->
+                <button onclick="switchPage('对照表总览')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     对照表总览
                 </button>
-                <!-- 按钮2 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+                <button onclick="switchPage('知识图谱')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     知识图谱
                 </button>
-                <!-- 按钮3 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+                <button onclick="switchPage('能力评价标准')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     能力评价标准
                 </button>
-                <!-- 按钮4 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+                <button onclick="switchPage('学用结合案例')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     学用结合案例
                 </button>
-                <!-- 按钮5 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+
+                <button onclick="switchPage('重点推荐')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     重点推荐
                 </button>
-                <!-- 按钮6 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+                <button onclick="switchPage('“举榜挂帅”项目')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     “举榜挂帅”项目
                 </button>
-                <!-- 按钮7 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+                <button onclick="switchPage('课程教材')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     课程教材
                 </button>
-                <!-- 按钮8 -->
-                <button class="w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] text-[20px] rounded-[8px]">
+                <button onclick="switchPage('工作建议')" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] rounded-[8px] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] transition-all cursor-pointer border border-transparent focus:outline-none">
                     工作建议
                 </button>
+                
             </div>
         </div>
 
     </div>
+
+    <!-- JavaScript 交互逻辑 -->
+    <script>
+        // 保存默认的全景图页面 HTML 内容，用于后续恢复
+        const defaultContentHTML = document.getElementById('main-content-display').innerHTML;
+
+        // 页面切换核心函数
+        function switchPage(pageName) {
+            const displayArea = document.getElementById('main-content-display');
+            const allBtns = document.querySelectorAll('.nav-btn');
+
+            // 1. 重置所有按钮状态 (去掉高亮文字颜色和特定背景)
+            allBtns.forEach(btn => {
+                btn.classList.remove('text-[#2B6EF5]', 'bg-[#F0F5FF]');
+            });
+
+            // 2. 高亮当前点击的按钮 (通过事件目标获取当前按钮)
+            const currentBtn = event.currentTarget;
+            currentBtn.classList.add('text-[#2B6EF5]', 'bg-[#F0F5FF]');
+
+            // 3. 移除淡入动画类名 (以便重新触发动画)
+            displayArea.classList.remove('fade-in');
+
+            // 4. 短暂延迟后切换内容，实现平滑的视觉过渡
+            setTimeout(() => {
+                // 如果点击的是“对照表总览”，则恢复成最开始的全景图布局
+                if (pageName === '对照表总览') {
+                    // 恢复原本包含 Flex 两列结构的 HTML
+                    displayArea.className = 'mt-[41px] w-[1800px] h-[701px] bg-[#FFFFFF] rounded-[8px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] p-[30px] flex gap-[20px] fade-in';
+                    displayArea.innerHTML = defaultContentHTML;
+                } else {
+                    // 如果点击的是其他按钮，则显示一个简单的占位提示界面
+                    // 修改外部容器的 class，使其变成单列居中布局
+                    displayArea.className = 'mt-[41px] w-[1800px] h-[701px] bg-[#FFFFFF] rounded-[8px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] p-[30px] flex flex-col items-center justify-center fade-in';
+                    
+                    displayArea.innerHTML = `
+                        <div class="w-[120px] h-[120px] mb-8">
+                            <!-- 用一个通用的开发中图标占位 -->
+                            <svg class="w-full h-full text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h2 class="text-[#344977] font-bold text-[36px] tracking-widest font-pangmen">${pageName}</h2>
+                        <p class="text-gray-400 text-[18px] mt-4 tracking-wide">该页面的专属切图和数据正在紧张接入中...</p>
+                        
+                        <!-- 提供一个返回按钮，方便用户切回主页 -->
+                        <button onclick="switchPage('对照表总览')" class="mt-12 bg-[#2D70EB] hover:bg-blue-600 text-white px-8 py-3 rounded-full font-bold tracking-wider transition-colors shadow-md text-lg cursor-pointer">
+                            返回全景图
+                        </button>
+                    `;
+                }
+            }, 50); // 50毫秒的微小延迟，足以让浏览器重新计算 DOM 并应用动画
+        }
+
+        // 页面加载完成后，默认让第一个“对照表总览”按钮处于高亮选中状态
+        window.onload = function() {
+            const firstBtn = document.querySelectorAll('.nav-btn')[0];
+            if(firstBtn) {
+                firstBtn.classList.add('text-[#2B6EF5]', 'bg-[#F0F5FF]');
+            }
+        }
+    </script>
 </body>
 </html>
