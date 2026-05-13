@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>政治业务对照表</title>
-    <!-- 引入 Tailwind CSS 引擎 -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#2F6CF2',
+                    },
+                }
+            }
+        }
+    </script>
     <style>
         /* 强制最小宽度为 1920px，保证所有的像素级尺寸绝对不会因为屏幕小而被挤压变形 */
         body {
@@ -19,10 +29,6 @@
         ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
         
         /* 引入设计稿特殊字体 (需本机安装，否则回退系统粗体) */
-        @font-face {
-            font-family: 'YouSheBiaoTiHei';
-            src: local('YouSheBiaoTiHei'), local('优设标题黑');
-        }
         .font-youshe { font-family: 'YouSheBiaoTiHei', 'Microsoft YaHei', sans-serif; }
         .font-pangmen { font-family: 'PangMenZhengDao', 'Impact', sans-serif; }
         .font-pingfang { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
@@ -36,21 +42,22 @@
 <body class="font-pingfang text-gray-800 antialiased min-h-screen flex flex-col items-center">
 
     <!-- ================= 顶部 banner (绝对高度 134px) ================= -->
-    <div class="w-full min-w-[1920px] h-[134px] text-white relative flex flex-col items-center justify-center space-y-1 shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] z-30">
+    <div class="w-full min-w-[1920px] h-[134px] text-white relative flex flex-col items-center justify-center shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] z-30">
         <div class="absolute inset-0 overflow-hidden z-0">
             <!-- 负边距裁剪切图自带的透明阴影白边 -->
             <div class="absolute inset-[-40px]" style="background-image: url('./assets/assets-banner-顶部背景图@2x.png'); background-size: cover; background-position: center;"></div>
         </div>
-        <div class="relative z-10 text-[36px] tracking-[2px] italic transform -skew-x-6 font-youshe" style="text-shadow: 0px 2px 4px rgba(0,0,0,0.25);">
+        
+        <!-- 精准调整：移除原来的 flex space-y，使用精确的 margin 来控制 20px 间距 -->
+        <div class="relative z-10 text-[36px] tracking-[2px] italic transform -skew-x-6 font-youshe leading-none" style="text-shadow: 0px 2px 4px rgba(0,0,0,0.25);">
             增强“四个意识” 坚定“四个自信” 做到“两个维护”
         </div>
-        <div class="relative z-10 text-[36px] tracking-[2px] italic transform -skew-x-6 font-youshe" style="text-shadow: 0px 2px 4px rgba(0,0,0,0.25);">
+        <div class="relative z-10 text-[36px] tracking-[2px] italic transform -skew-x-6 font-youshe leading-none mt-[20px]" style="text-shadow: 0px 2px 4px rgba(0,0,0,0.25);">
             守国门 促发展 当好让党放心 让人民满意的国门卫士
         </div>
     </div>
 
     <!-- ================= 次级导航区徽章 (绝对高度 102px) ================= -->
-    <!-- 修正：恢复了 380x62 的内发光胶囊背景框，并将文字精确调整为 32px 优设蓝字 -->
     <div class="bg-white w-full min-w-[1920px] h-[102px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] z-20 relative flex items-center justify-center">
         <!-- 锁定中心内容区间距 -->
         <div class="w-[1800px] flex items-center justify-center gap-[40px]">
@@ -59,8 +66,9 @@
                 <div class="w-[82px] h-[82px] flex-shrink-0 relative z-10">
                     <img src="./assets/assets-icon-压实“四级”主体责任@2x.png" class="w-full h-full object-contain">
                 </div>
-                <div class="ml-[20px] w-[380px] h-[62px] bg-[#FCFCFD] rounded-[6px] shadow-[inset_1px_-1px_6px_0px_rgba(201,212,230,0.8)] flex items-center pl-[30px]">
-                    <span class="text-[#2D70EB] font-youshe text-[32px] tracking-wide leading-none pt-1">压实“四级”主体责任</span>
+                <!-- 恢复内阴影背景框并保持优设蓝字 -->
+                <div class="ml-[20px] w-[380px] h-[62px] bg-[#FCFCFD] rounded-[6px] shadow-[inset_1px_-1px_6px_0px_rgba(201,212,230,0.8)] flex items-center justify-center">
+                    <span class="text-[#2D70EB] font-youshe text-[32px] font-normal leading-none" style="text-shadow: 0px 1px 1px rgba(255,255,255,0.8);">压实“四级”主体责任</span>
                 </div>
             </div>
             
@@ -68,8 +76,8 @@
                 <div class="w-[82px] h-[82px] flex-shrink-0 relative z-10">
                     <img src="./assets/assets-icon-优化“五有”运行模式@2x.png" class="w-full h-full object-contain">
                 </div>
-                <div class="ml-[20px] w-[380px] h-[62px] bg-[#FCFCFD] rounded-[6px] shadow-[inset_1px_-1px_6px_0px_rgba(201,212,230,0.8)] flex items-center pl-[30px]">
-                    <span class="text-[#2D70EB] font-youshe text-[32px] tracking-wide leading-none pt-1">优化“五有”运行模式</span>
+                <div class="ml-[20px] w-[380px] h-[62px] bg-[#FCFCFD] rounded-[6px] shadow-[inset_1px_-1px_6px_0px_rgba(201,212,230,0.8)] flex items-center justify-center">
+                    <span class="text-[#2D70EB] font-youshe text-[32px] font-normal leading-none" style="text-shadow: 0px 1px 1px rgba(255,255,255,0.8);">优化“五有”运行模式</span>
                 </div>
             </div>
 
@@ -77,8 +85,8 @@
                 <div class="w-[82px] h-[82px] flex-shrink-0 relative z-10">
                     <img src="./assets/assets-icon-拧紧“七步”程序链条@2x.png" class="w-full h-full object-contain">
                 </div>
-                <div class="ml-[20px] w-[380px] h-[62px] bg-[#FCFCFD] rounded-[6px] shadow-[inset_1px_-1px_6px_0px_rgba(201,212,230,0.8)] flex items-center pl-[30px]">
-                    <span class="text-[#2D70EB] font-youshe text-[32px] tracking-wide leading-none pt-1">拧紧“七步”程序链条</span>
+                <div class="ml-[20px] w-[380px] h-[62px] bg-[#FCFCFD] rounded-[6px] shadow-[inset_1px_-1px_6px_0px_rgba(201,212,230,0.8)] flex items-center justify-center">
+                    <span class="text-[#2D70EB] font-youshe text-[32px] font-normal leading-none" style="text-shadow: 0px 1px 1px rgba(255,255,255,0.8);">拧紧“七步”程序链条</span>
                 </div>
             </div>
 
