@@ -71,8 +71,8 @@
 
     <!-- ================= 次级导航区徽章 (绝对高度 102px) ================= -->
     <div class="bg-white w-full min-w-[1920px] h-[102px] shadow-[2px_4px_20px_0px_rgba(68,73,85,0.12)] z-20 relative flex items-center justify-center">
-        <!-- 锁定中心内容区间距 -->
-        <div class="w-[1800px] flex items-center justify-center">
+        <!-- 锁定中心内容区间距，移除分割线，并使用 gap-x-[40px] 设置间距 -->
+        <div class="w-[1800px] flex items-center justify-center gap-x-[40px]">
             
             <!-- 模块 1：压实四级 -->
             <div class="flex items-center">
@@ -85,9 +85,6 @@
                 </div>
             </div>
             
-            <!-- 分隔线 (两侧各 40px 间距) -->
-            <div class="mx-[40px] w-[1px] h-[30px] bg-[#E2E8F0]"></div>
-            
             <!-- 模块 2：优化五有 -->
             <div class="flex items-center">
                 <div class="w-[60px] h-[60px] flex-shrink-0 relative z-10 animate-float" style="animation-delay: 0.2s;">
@@ -97,9 +94,6 @@
                     <span class="text-[#2D70EB] font-youshe text-[32px] font-normal leading-none tracking-wide whitespace-nowrap">优化“五有”运行模式</span>
                 </div>
             </div>
-
-            <!-- 分隔线 (两侧各 40px 间距) -->
-            <div class="mx-[40px] w-[1px] h-[30px] bg-[#E2E8F0]"></div>
 
             <!-- 模块 3：拧紧七步 -->
             <div class="flex items-center">
@@ -327,29 +321,29 @@
             <!-- 精准布局网格：四列，每列宽420px，横向间距20px，纵向间距25px (内部按钮为直角) -->
             <div class="grid grid-cols-4 gap-x-[20px] gap-y-[25px]">
                 
-                <button onclick="switchPage('对照表总览', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('对照表总览', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     对照表总览
                 </button>
-                <button onclick="switchPage('知识图谱', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('知识图谱', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     知识图谱
                 </button>
-                <button onclick="switchPage('能力评价标准', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('能力评价标准', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     能力评价标准
                 </button>
-                <button onclick="switchPage('学用结合案例', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('学用结合案例', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     学用结合案例
                 </button>
 
-                <button onclick="switchPage('重点推荐', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('重点推荐', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     重点推荐
                 </button>
-                <button onclick="switchPage('“举榜挂帅”项目', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('“举榜挂帅”项目', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     “举榜挂帅”项目
                 </button>
-                <button onclick="switchPage('课程教材', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('课程教材', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     课程教材
                 </button>
-                <button onclick="switchPage('工作建议', this)" class="nav-btn w-[420px] h-[80px] bg-[#FCFCFD] shadow-[inset_1px_-1px_20px_0px_#DFE5EF] text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:text-[#2B6EF5] hover:bg-[#F0F5FF] transition-all">
+                <button onclick="switchPage('工作建议', this)" class="nav-btn w-[420px] h-[80px] bg-[#FFFFFF] border border-[#2D70EB] shadow-sm text-[#344977] font-bold tracking-wider flex items-center justify-center text-[22px] hover:bg-[#E6F0FF] hover:text-[#2B6EF5] hover:border-[#2B6EF5] transition-all rounded-[6px]">
                     工作建议
                 </button>
                 
@@ -374,10 +368,10 @@
 
             // 更新按钮激活状态
             navBtns.forEach(btn => {
-                btn.classList.remove('text-[#2B6EF5]', 'bg-[#F0F5FF]');
+                btn.classList.remove('text-[#2B6EF5]', 'bg-[#E6F0FF]', 'border-[#2B6EF5]'); // 移除激活时的文字、背景和边框颜色
             });
             if (btnElement) {
-                btnElement.classList.add('text-[#2B6EF5]', 'bg-[#F0F5FF]');
+                btnElement.classList.add('text-[#2B6EF5]', 'bg-[#E6F0FF]', 'border-[#2B6EF5]'); // 添加激活时的文字、背景和边框颜色
             }
 
             // 执行淡出动画
@@ -411,7 +405,7 @@
         window.onload = function() {
             const firstBtn = document.querySelectorAll('.nav-btn')[0];
             if(firstBtn) {
-                firstBtn.classList.add('text-[#2B6EF5]', 'bg-[#F0F5FF]');
+                firstBtn.classList.add('text-[#2B6EF5]', 'bg-[#E6F0FF]', 'border-[#2B6EF5]');
             }
         }
     </script>
