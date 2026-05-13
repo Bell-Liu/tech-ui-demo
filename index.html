@@ -199,79 +199,84 @@
                     </div>
 
                     <!-- 树状图演示核心区 -->
-                    <div class="flex-grow flex items-center justify-center relative">
-                        <div class="flex items-center">
-                            
-                            <!-- 中心节点 (纯蓝，184x96，圆角 8px) -->
-                            <div class="relative z-10">
-                                <div class="bg-[#2D70EB] text-white text-center rounded-[8px] shadow-[0px_2px_3px_0px_rgba(0,0,49,0.60)] w-[184px] h-[96px] flex flex-col items-center justify-center font-youshe text-[28px] leading-[30px] whitespace-nowrap">
-                                    <span>政治业务</span>
-                                    <span>对照表</span>
-                                </div>
-                                <div class="absolute top-1/2 -right-[48px] w-[48px] h-[1px] bg-[#2D70EB]/30"></div>
+                <div class="flex-grow flex items-center justify-center relative min-h-[350px] 2xl:min-h-[400px] overflow-x-auto">
+                    
+                    <div class="flex items-center min-w-max pr-4">
+                        <!-- 中心节点 (恢复为 184x96 的设计) -->
+                        <div class="relative z-10">
+                            <div class="bg-[#2D70EB] text-white text-center rounded-[8px] shadow-[0px_2px_3px_0px_rgba(0,0,49,0.60)] w-[184px] h-[96px] flex flex-col items-center justify-center font-youshe text-[28px] leading-[30px] whitespace-nowrap">
+                                <span>政治业务</span>
+                                <span>对照表</span>
                             </div>
+                            <!-- 主连线 -->
+                            <div class="absolute top-1/2 -right-[48px] w-[48px] h-[1px] bg-[#2D70EB]/30"></div>
+                        </div>
+
+                        <!-- 右侧子节点群 -->
+                        <div class="relative ml-[48px] flex flex-col space-y-[24px] py-2 z-10">
+                            <!-- 垂直连线 -->
+                            <div class="absolute left-0 top-[33px] bottom-[33px] w-[1px] bg-[#2D70EB]/30"></div>
                             
-                            <!-- 右侧子节点群 -->
-                            <div class="relative ml-[48px] flex flex-col space-y-[20px] py-2 z-10">
-                                <div class="absolute left-0 top-[48px] bottom-[48px] w-[1px] bg-[#2D70EB]/30"></div>
-                                
-                                <!-- 节点1：卫生检疫 -->
-                                <div class="relative flex items-center">
-                                    <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
-                                    <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] w-[184px] h-[96px] shadow-sm flex items-center relative overflow-hidden">
-                                        <div class="absolute left-[10px] top-1/2 -translate-y-1/2 w-[6px] h-[47px] bg-[#F24646] rounded-full"></div>
-                                        <div class="flex flex-col justify-center pl-[26px]">
-                                            <div class="text-[18px] font-medium text-[#344977] tracking-wide leading-none whitespace-nowrap">卫生检疫</div>
-                                            <div class="text-[12px] text-gray-500 mt-[6px] leading-none">1个条线</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 节点2：进出口商品检验 (去除破坏性的 overflow-hidden，让文字自然排布) -->
-                                <div class="relative flex items-center">
-                                    <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
-                                    <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] w-[184px] h-[96px] shadow-sm flex items-center relative">
-                                         <div class="absolute left-[10px] top-1/2 -translate-y-1/2 w-[6px] h-[47px] flex flex-col rounded-full overflow-hidden">
-                                             <div class="flex-1 bg-[#F24646]"></div><div class="flex-1 bg-[#FF8341]"></div><div class="flex-1 bg-[#27C927]"></div><div class="flex-1 bg-[#00B3E8]"></div>
-                                         </div>
-                                         <!-- 使用更灵活的 flex，避免定宽截断文字 -->
-                                         <div class="flex flex-col justify-center pl-[26px]">
-                                            <div class="text-[18px] font-medium text-[#344977] tracking-wide leading-none whitespace-nowrap">进出口商品检验</div>
-                                            <div class="text-[12px] text-gray-500 mt-[6px] leading-none">4个条线</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 节点3：动植物检疫 -->
-                                <div class="relative flex items-center">
-                                    <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
-                                    <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] w-[184px] h-[96px] shadow-sm flex items-center relative overflow-hidden">
-                                        <div class="absolute left-[10px] top-1/2 -translate-y-1/2 w-[6px] h-[47px] bg-[#27C927] rounded-full"></div>
-                                        <div class="flex flex-col justify-center pl-[26px]">
-                                            <div class="text-[18px] font-medium text-[#344977] tracking-wide leading-none whitespace-nowrap">动植物检疫</div>
-                                            <div class="text-[12px] text-gray-500 mt-[6px] leading-none">1个条线</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 节点4：统计分析 -->
-                                <div class="relative flex items-center">
-                                    <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
-                                    <div class="bg-[#F0F5FF] border border-[#DCE8FF] rounded-[8px] w-[184px] h-[96px] shadow-sm flex items-center relative overflow-hidden">
-                                        <div class="absolute left-[10px] top-1/2 -translate-y-1/2 w-[6px] h-[47px] flex flex-col rounded-full overflow-hidden">
-                                            <div class="flex-[3] bg-[#FF8341]"></div><div class="flex-[2] bg-[#00B3E8]"></div>
-                                        </div>
-                                        <div class="flex flex-col justify-center pl-[26px]">
-                                            <div class="text-[18px] font-medium text-[#344977] tracking-wide leading-none whitespace-nowrap">统计分析</div>
-                                            <div class="text-[12px] text-gray-500 mt-[6px] leading-none">5个条线</div>
-                                        </div>
+                            <!-- 节点1：卫生检疫 (尺寸恢复为 135x67，圆角 10px，色块内部定位调整) -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
+                                <div class="bg-[#F0F5FF] border border-[#2D70EB]/30 rounded-[10px] w-[135px] h-[67px] shadow-sm flex items-center relative">
+                                    <!-- 调整后的左侧色块条 (宽4px，高36px，左侧边距8px) -->
+                                    <div class="absolute left-[8px] top-1/2 -translate-y-1/2 w-[4px] h-[36px] bg-[#EF4444] rounded-full"></div>
+                                    <!-- 文字区域 (整体右移避开色条) -->
+                                    <div class="flex flex-col justify-center pl-[22px]">
+                                        <div class="text-[16px] font-semibold text-[#344977] tracking-wide leading-none whitespace-nowrap">卫生检疫</div>
+                                        <div class="text-[12px] text-gray-500 mt-[4px] leading-none">1个条线</div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- 节点2：进出口商品检验 (去除破坏性的 overflow-hidden，调整复合色条) -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
+                                <div class="bg-[#F0F5FF] border border-[#2D70EB]/30 rounded-[10px] w-[135px] h-[67px] shadow-sm flex items-center relative">
+                                     <!-- 调整后的复合色条 -->
+                                     <div class="absolute left-[8px] top-1/2 -translate-y-1/2 w-[4px] h-[36px] flex flex-col rounded-full overflow-hidden">
+                                         <div class="flex-1 bg-[#EF4444]"></div><div class="flex-1 bg-[#FF8341]"></div><div class="flex-1 bg-[#22C55E]"></div><div class="flex-1 bg-[#0EA5E9]"></div>
+                                     </div>
+                                     <div class="flex flex-col justify-center pl-[22px]">
+                                        <div class="text-[16px] font-semibold text-[#344977] tracking-wide leading-[1.1] whitespace-nowrap">进出口商品检验</div>
+                                        <div class="text-[12px] text-gray-500 mt-[2px] leading-none">4个条线</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 节点3：动植物检疫 -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
+                                <div class="bg-[#F0F5FF] border border-[#2D70EB]/30 rounded-[10px] w-[135px] h-[67px] shadow-sm flex items-center relative">
+                                    <div class="absolute left-[8px] top-1/2 -translate-y-1/2 w-[4px] h-[36px] bg-[#22C55E] rounded-full"></div>
+                                    <div class="flex flex-col justify-center pl-[22px]">
+                                        <div class="text-[16px] font-semibold text-[#344977] tracking-wide leading-none whitespace-nowrap">动植物检疫</div>
+                                        <div class="text-[12px] text-gray-500 mt-[4px] leading-none">1个条线</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 节点4：统计分析 -->
+                            <div class="relative flex items-center">
+                                <div class="w-[32px] h-[1px] bg-[#2D70EB]/30"></div>
+                                <div class="bg-[#F0F5FF] border border-[#2D70EB]/30 rounded-[10px] w-[135px] h-[67px] shadow-sm flex items-center relative">
+                                    <!-- 调整后的复合色条 -->
+                                    <div class="absolute left-[8px] top-1/2 -translate-y-1/2 w-[4px] h-[36px] flex flex-col rounded-full overflow-hidden">
+                                        <div class="flex-[3] bg-[#FF8341]"></div><div class="flex-[2] bg-[#0EA5E9]"></div>
+                                    </div>
+                                    <div class="flex flex-col justify-center pl-[22px]">
+                                        <div class="text-[16px] font-semibold text-[#344977] tracking-wide leading-none whitespace-nowrap">统计分析</div>
+                                        <div class="text-[12px] text-gray-500 mt-[4px] leading-none">5个条线</div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                <!-- 占位切换内容，由JS控制显示 -->
+
             </div>
 
             <!-- 右侧 3 卡片 (绝对尺寸 428x640，内部纵向间距20px，直角) -->
